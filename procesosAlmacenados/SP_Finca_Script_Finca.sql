@@ -18,6 +18,13 @@ begin
      where fin_id = v_id;
 end//
 DELIMITER ;
+-- Mostrar el id y el nombre
+DELIMITER //
+create procedure procSelectFincaDDL()
+begin
+     select fin_id, fin_nombre as nombre from tbl_finca;
+end//
+DELIMITER ;
 -- Mostrar
 DELIMITER //
 create procedure procSelectFinca()
