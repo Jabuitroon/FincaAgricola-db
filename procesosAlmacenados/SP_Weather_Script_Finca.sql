@@ -25,6 +25,14 @@ begin
      select clim_id, clim_temperatura, clim_humedad from tbl_clima;
 end//
 DELIMITER ;
+-- Mostrar unicamente el id y la temperatura
+DELIMITER //
+create procedure procSelectWeatherDDL()
+begin
+     select clim_id,concat(clim_id, '',clim_temperatura) as temperatura
+    from tbl_clima;
+end//
+DELIMITER ;
 -- Eliminar
 DELIMITER //
 create procedure procDeleteWeather(IN v_id INT)
