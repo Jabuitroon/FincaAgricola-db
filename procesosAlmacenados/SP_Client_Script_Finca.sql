@@ -28,6 +28,14 @@ BEGIN
     FROM tbl_cliente;
 END//
 DELIMITER ;
+
+-- Seleccionar el id y nombre del cliente 
+DELIMITER //
+CREATE PROCEDURE spSelectClienteDDL()
+BEGIN
+	select cli_id, cli_nombre  as NombreCompleto from tbl_cliente;
+END//
+DELIMITER ;
 -- Eliminar
  DELIMITER //
 CREATE PROCEDURE procDeleteClient(IN v_id INT)
