@@ -8,13 +8,10 @@ end//
 DELIMITER ;
 -- Actualizar
 DELIMITER //
-create procedure procUpdateCrop(IN v_id INT ,IN v_nombre VARCHAR(45), IN v_descripcion VARCHAR(100))
+create procedure procUpdateCrop(IN v_id INT ,IN v_nombre VARCHAR(45), IN v_descripcion VARCHAR(100), IN v_parcela_id int)
 begin
      update tbl_cultivo
-     set cul_nombre = v_nombre
-     where cul_id = v_id;
-	 update tbl_cultivo
-     set cul_descripcion = v_descripcion
+     set cul_nombre = v_nombre , cul_descripcion = v_descripcion, tbl_parcela_par_id = v_parcela_id
      where cul_id = v_id;
 end//
 DELIMITER ;
@@ -22,8 +19,16 @@ DELIMITER ;
 DELIMITER //
 create procedure procSelectCrop()
 begin
-     select cul_id, cul_nombre, cul_descripcion from tbl_cultivo;
+     select cul_id, cul_nombre, cul_descripcion, tbl_parcela_par_id from tbl_cultivo;
 end//
+DELIMITER ;
+-- Selecciona unicamente el id y el nombre de los cultivos
+DELIMITER //
+CREATE PROCEDURE spSelectCropsDDL()
+BEGIN
+	select concat(cul_id, '',cul_nombre) as nombreCultivo
+    from tbl_cultivo;
+END//
 DELIMITER ;
 -- Eliminar
 DELIMITER //
