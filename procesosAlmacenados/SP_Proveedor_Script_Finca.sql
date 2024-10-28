@@ -88,6 +88,14 @@ BEGIN
         p.pro_id = v_proveedor_id;
 END//
 DELIMITER ;
+-- Selecciona unicamente el id y el nombre de los provedores
+DELIMITER //
+CREATE PROCEDURE spSelectProveedorDDL()
+BEGIN
+	select pro_id,concat(pro_nit, '',pro_nombre) as nombreProveedor
+    from tbl_proveedor;
+END//
+DELIMITER ;
 -- Eliminar
 DELIMITER //
 CREATE PROCEDURE procDeleteProveedor(
