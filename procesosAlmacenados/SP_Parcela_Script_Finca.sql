@@ -24,6 +24,14 @@ begin
      select par_id, par_dimensiones, par_ubicacion from tbl_parcela;
 end//
 DELIMITER ;
+-- Seleccionar el id y la ubicación de la parcela 
+DELIMITER //
+CREATE PROCEDURE spSelectParcelaDDL()
+BEGIN
+	select par_id, par_ubicacion as ubicacionParcela
+    from tbl_parcela;
+END//
+DELIMITER ;
 -- Eliminar
 DELIMITER //
 create procedure procDeleteParcela(IN v_id INT)
