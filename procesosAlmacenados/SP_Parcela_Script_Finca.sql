@@ -30,7 +30,7 @@ CREATE PROCEDURE spSelectParcelaDDL()
 BEGIN
 	select par_id, par_ubicacion as ubicacionParcela
     from tbl_parcela;
-END//spSelectParcelaDLL
+END//
 DELIMITER ;
 -- Eliminar
 DELIMITER //
