@@ -25,6 +25,13 @@ begin
      select cat_id, cat_nombre, cat_descripcion from tbl_categoria;
 end//
 DELIMITER ;
+-- Mostrar unicamente el nombre 
+DELIMITER //
+create procedure procSelectCategoryDDL()
+begin
+     select cat_id, cat_nombre as nombre from tbl_categoria;
+end//
+DELIMITER ;
 -- Eliminar
 DELIMITER //
 create procedure procDeleteCategory(IN v_id INT)
