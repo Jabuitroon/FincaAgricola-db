@@ -28,6 +28,11 @@ begin
      select pro_nombre, pro_descripcion, pro_cantidad, pro_precio, pro_img, tbl_proveedor_pro_id, tbl_categoria_cat_id from tbl_productos;
 end//
 DELIMITER ;
+create procedure spSelectProductDDL()
+BEGIN
+	select pro_id, pro_nombre as NombreProducto
+    from tbl_productos;
+END
 -- Eliminar
 DELIMITER //
 create procedure procDeleteProduct(IN v_id INT)
