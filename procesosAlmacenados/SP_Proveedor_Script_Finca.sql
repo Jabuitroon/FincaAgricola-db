@@ -69,7 +69,16 @@ END//
 DELIMITER ;
 -- Mostrar
 DELIMITER //
-CREATE PROCEDURE procSelecProveedor(
+create procedure procSelecProveedor()
+begin
+     select pro_id, pro_nit, pro_nombre, tbl_finca_fin_id, tbl_finca.fin_nombre from tbl_proveedor
+     INNER JOIN tbl_finca
+	 ON tbl_proveedor. tbl_finca_fin_id = tbl_finca.fin_id;
+end//
+DELIMITER ;
+-- Mostrar por Id
+DELIMITER //
+CREATE PROCEDURE procSelecIdProveedor(
     IN v_proveedor_id INT
 )
 BEGIN 

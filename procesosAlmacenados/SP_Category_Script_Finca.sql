@@ -29,7 +29,7 @@ DELIMITER ;
 DELIMITER //
 create procedure procSelectCategoryDDL()
 begin
-     select cat_id, cat_nombre as nombre from tbl_categoria;
+     select cat_id, concat(cat_id, ' ',cat_nombre) as nombre from tbl_categoria;
 end//
 DELIMITER ;
 -- Eliminar

@@ -22,7 +22,7 @@ DELIMITER ;
 DELIMITER //
 create procedure procSelectFincaDDL()
 begin
-     select fin_id, fin_nombre as nombre from tbl_finca;
+     select fin_id,concat(fin_id, ' ',fin_nombre) as nombre from tbl_finca;
 end//
 DELIMITER ;
 -- Mostrar

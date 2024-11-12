@@ -14,7 +14,7 @@ begin
      set pro_nombre = v_nombre,
 		 pro_descripcion = v_descripcion,
          pro_cantidad= v_cantidad,
-         pro_precio= v_precio.
+         pro_precio= v_precio,
          pro_img= v_img,
          tbl_proveedor_pro_id = vfk_proveedor,
          tbl_categoria_cat_id = vfk_categorias
@@ -25,14 +25,25 @@ DELIMITER ;
 DELIMITER //
 create procedure procSelectProduct()
 begin
-     select pro_nombre, pro_descripcion, pro_cantidad, pro_precio, pro_img, tbl_proveedor_pro_id, tbl_categoria_cat_id from tbl_productos;
+	select tbl_productos.pro_id AS producto_id, tbl_productos.pro_nombre, tbl_productos.pro_descripcion, 
+    tbl_productos.pro_cantidad, tbl_productos.pro_precio, tbl_productos.pro_img, tbl_productos.tbl_proveedor_pro_id, 
+    tbl_proveedor.pro_nombre AS proveedor_nombre, tbl_productos.tbl_categoria_cat_id, tbl_categoria.cat_nombre
+    FROM 
+    tbl_productos
+    INNER JOIN tbl_proveedor
+	ON tbl_productos.tbl_proveedor_pro_id = tbl_proveedor.pro_id
+    INNER JOIN 
+    tbl_categoria 
+    ON tbl_productos.tbl_categoria_cat_id = tbl_categoria.cat_id;
 end//
 DELIMITER ;
-create procedure spSelectProductDDL()
+-- Mostrar DDL
+DELIMITER //
+create procedure procSelectProductDDL()
 BEGIN
-	select pro_id, pro_nombre as NombreProducto
-    from tbl_productos;
-END
+	select pro_id, pro_nombre from tbl_productos;
+END //
+DELIMITER ;
 -- Eliminar
 DELIMITER //
 create procedure procDeleteProduct(IN v_id INT)
