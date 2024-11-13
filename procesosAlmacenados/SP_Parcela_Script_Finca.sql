@@ -12,18 +12,29 @@ create procedure procUpdateParcela(IN v_id INT ,IN v_dimensiones int, IN v_ubica
 begin
 	
      update tbl_parcela
-     set par_dimensiones = v_dimensiones, par_ubicacion = v_ubicacion, tbl_finca_fin_id = vfk_finca, tbl_clima_clim_i = vfk_clima
+     set par_dimensiones = v_dimensiones, par_ubicacion = v_ubicacion, tbl_finca_fin_id = vfk_finca, tbl_clima_clim_id = vfk_clima
      where par_id = v_id;
      
 end//
 DELIMITER ;
+
+
 -- Mostrar
 DELIMITER //
 create procedure procSelectParcela()
 begin
-     select par_id, par_dimensiones, par_ubicacion, tbl_finca_fin_id, tbl_clima_clim_i from tbl_parcela;
-end//
+	select tbl_parcela.par_id AS parcela_id, tbl_parcela.par_dimensiones, tbl_parcela.par_ubicacion, tbl_parcela.tbl_finca_fin_id, 
+    tbl_finca.fin_nombre AS Finca_nombre, tbl_parcela.tbl_clima_clim_id, tbl_clima.clim_temperatura
+    FROM 
+    tbl_parcela
+    INNER JOIN tbl_finca
+    ON tbl_parcela.tbl_finca_fin_id = tbl_finca_fin_id
+    INNER JOIN 
+    tbl_clima
+    ON tbl_parcela.tbl_clima_clim_id = tbl_clima.clim_id;
+end//procSelectParcela
 DELIMITER ;
+
 -- Seleccionar el id y la ubicación de la parcela 
 DELIMITER //
 CREATE PROCEDURE spSelectParcelaDDL()
