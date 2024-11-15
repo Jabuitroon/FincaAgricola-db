@@ -17,31 +17,25 @@ begin
      
 end//
 DELIMITER ;
-
-
 -- Mostrar
 DELIMITER //
 create procedure procSelectParcela()
 begin
-	select tbl_parcela.par_id AS parcela_id, tbl_parcela.par_dimensiones, tbl_parcela.par_ubicacion, tbl_parcela.tbl_finca_fin_id, 
-    tbl_finca.fin_nombre AS Finca_nombre, tbl_parcela.tbl_clima_clim_id, tbl_clima.clim_temperatura
+	select par_id As parcela_id, par_dimensiones, par_ubicacion, tbl_finca_fin_id, 
+    tbl_finca.fin_nombre AS Finca_nombre, tbl_clima_clim_id, tbl_clima.clim_temperatura
     FROM 
     tbl_parcela
     INNER JOIN tbl_finca
-    ON tbl_parcela.tbl_finca_fin_id = tbl_finca_fin_id
+    ON tbl_parcela.tbl_finca_fin_id = tbl_finca.fin_id
     INNER JOIN 
     tbl_clima
     ON tbl_parcela.tbl_clima_clim_id = tbl_clima.clim_id;
-end//procSelectParcela
-DELIMITER ;
-
--- Seleccionar el id y la ubicación de la parcela 
+end//
 DELIMITER //
-CREATE PROCEDURE spSelectParcelaDDL()
-BEGIN
-	select par_id, par_ubicacion as ubicacionParcela
-    from tbl_parcela;
-END//
+create procedure procSelectParcelaDDL()
+begin
+     select par_id, concat('Parcela N° ', par_id) as nombre from tbl_parcela;
+end //
 DELIMITER ;
 -- Eliminar
 DELIMITER //

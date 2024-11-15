@@ -22,6 +22,13 @@ begin
      select ins_id, ins_nombre, ins_tipo, ins_cantidad, tbl_cultivo_cul_id, tbl_cultivo_tbl_parcela_par_id from tbl_insumo;
 end//
 DELIMITER ;
+-- Mostrar
+DELIMITER //
+create procedure procSelectInputDDL()
+begin
+     select ins_id,concat(ins_id, ' ',ins_nombre) as nombre from tbl_insumo;
+end//
+DELIMITER ;
 -- Eliminar
 DELIMITER //
 create procedure procDeleteInput(IN v_id INT)

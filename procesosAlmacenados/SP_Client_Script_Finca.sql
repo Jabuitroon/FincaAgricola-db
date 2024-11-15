@@ -24,7 +24,7 @@ DELIMITER ;
  DELIMITER //
 CREATE PROCEDURE procSelectClient()
 BEGIN
-    SELECT cli_id, cli_nombre, cli_correo, cli_direccion, cli_ciudad
+    SELECT cli_id, cli_nombre, cli_correo, cli_contrasena, cli_direccion, cli_ciudad
     FROM tbl_cliente;
 END//
 DELIMITER ;

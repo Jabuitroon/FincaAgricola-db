@@ -19,21 +19,22 @@ DELIMITER ;
 DELIMITER //
 create procedure procSelectCrop()
 begin
-     select cul_id, cul_nombre, cul_descripcion, tbl_parcela_par_id from tbl_cultivo;
-end//
-DELIMITER ;
--- Mostrar
-DELIMITER //
-create procedure procSelectCrop()
-begin
 	select cul_id AS cultivo_id, cul_nombre, cul_descripcion , tbl_parcela_par_id, tbl_parcela.par_ubicacion
 	AS Parcela_ubicacion
     FROM 
     tbl_cultivo
     INNER JOIN tbl_parcela
     ON tbl_cultivo.tbl_parcela_par_id = tbl_parcela.par_id;
-end//
-
+end //
+DELIMITER ;
+-- Mostrar unicamente el id y la Nombre del cultivo
+DELIMITER //
+create procedure procSelectCropDDL()
+BEGIN
+	select cul_id, concat(cul_id, '',cul_nombre) as nombreCultivo
+    from tbl_cultivo;
+END //
+DELIMITER ;
 -- Eliminar
 DELIMITER //
 create procedure procDeleteCrop(IN v_id INT)

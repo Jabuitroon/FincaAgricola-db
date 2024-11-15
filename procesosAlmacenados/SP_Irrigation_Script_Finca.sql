@@ -6,9 +6,10 @@ begin
       insert into tbl_riego(rie_tipo, rie_cantidad_agua, rie_frecuencia, tbl_cultivo_cul_idt, bl_cultivo_tbl_parcela_par_id) values(v_tipo, v_cantidad_agua, v_frecuencia, vfk_cultivo_id, vfk_tbl_par_id);
 end //
 DELIMITER ;
+-- Coorregir todoooooooo
 -- Actualizar
 DELIMITER //
-create procedure procUpdateWeather(IN v_id INT ,IN v_temperatura VARCHAR(45), IN v_humedad VARCHAR(45))
+create procedure procUpdateIrrigation(IN v_id INT ,IN v_tipo VARCHAR(45), IN v_cantidad_agua VARCHAR(45), IN v_frecuencia datetime, IN vfk_cultivo_id int, IN vfk_tbl_par_id int)
 begin
      update tbl_clima
      set clim_temperatura = v_temperatura
@@ -20,7 +21,7 @@ end//
 DELIMITER ;
 -- Mostrar
 DELIMITER //
-create procedure procSelectWeather()
+create procedure procSelectIrrigation()
 begin
      select clim_id, clim_temperatura, clim_humedad from tbl_clima;
 end//
