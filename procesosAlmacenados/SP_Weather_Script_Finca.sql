@@ -1,9 +1,9 @@
 -- Clima
 -- Insertar
 DELIMITER //
-CREATE PROCEDURE procInsertWeather(IN v_temp VARCHAR(45), IN v_hum VARCHAR(100))
+CREATE PROCEDURE procInsertWeather(IN v_temperatura VARCHAR(45), IN v_humedad VARCHAR(100))
 begin
-      insert into tbl_clima(clim_temperatura, clim_humedad) values(v_temp, v_hum);
+      insert into tbl_clima(clim_temperatura, clim_humedad) values(v_temperatura, v_humedad);
 end //
 DELIMITER ;
 -- Actualizar
