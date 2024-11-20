@@ -25,7 +25,7 @@ begin
     tbl_cultivo
     INNER JOIN tbl_parcela
     ON tbl_cultivo.tbl_parcela_par_id = tbl_parcela.par_id;
-end
+end //
 DELIMITER ;
 -- Mostrar unicamente el id y la Nombre del cultivo
 DELIMITER //
@@ -33,7 +33,7 @@ create procedure procSelectCropDDL()
 BEGIN
 	select cul_id, concat(cul_id, '',cul_nombre) as nombreCultivo
     from tbl_cultivo;
-END
+END //
 DELIMITER ;
 -- Eliminar
 DELIMITER //

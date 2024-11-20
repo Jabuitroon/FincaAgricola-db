@@ -17,8 +17,6 @@ begin
      
 end//
 DELIMITER ;
-
-
 -- Mostrar
 DELIMITER //
 create procedure procSelectParcela()
@@ -33,6 +31,12 @@ begin
     tbl_clima
     ON tbl_parcela.tbl_clima_clim_id = tbl_clima.clim_id;
 end//
+DELIMITER //
+create procedure procSelectParcelaDDL()
+begin
+     select par_id, concat('Parcela N° ', par_id) as nombre from tbl_parcela;
+end //
+DELIMITER ;
 -- Eliminar
 DELIMITER //
 create procedure procDeleteParcela(IN v_id INT)
